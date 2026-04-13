@@ -72,7 +72,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/mvpgapchain/'),
+  history: createWebHistory('/gapchain/'),
   routes,
 })
 
