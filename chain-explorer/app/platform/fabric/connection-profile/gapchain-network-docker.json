@@ -1,0 +1,86 @@
+{
+	"name": "gapchain-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminCredential": {
+			"id": "exploreradmin",
+			"password": "exploreradminpw"
+		},
+		"enableAuthentication": true,
+		"organization": "PlatformOrgMSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		},
+		"clientTlsIdentity": "tls-admin",
+		"tlsCerts": {
+			"systemCertPool": true,
+			"client": {
+				"cert": {
+					"path": "/tmp/crypto/peerOrganizations/platform.gapchain.vn/users/Admin@platform.gapchain.vn/tls/client.crt"
+				},
+				"key": {
+					"path": "/tmp/crypto/peerOrganizations/platform.gapchain.vn/users/Admin@platform.gapchain.vn/tls/client.key"
+				}
+			}
+		}
+	},
+	"channels": {
+		"nhatky-htx-channel": {
+			"peers": {
+				"peer0.platform.gapchain.vn": {}
+			}
+		},
+		"giaodich-channel": {
+			"peers": {
+				"peer0.platform.gapchain.vn": {}
+			}
+		}
+	},
+	"organizations": {
+		"PlatformOrgMSP": {
+			"mspid": "PlatformOrgMSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/platform.gapchain.vn/users/Admin@platform.gapchain.vn/msp/keystore/priv_sk"
+			},
+			"peers": [
+				"peer0.platform.gapchain.vn"
+			],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/platform.gapchain.vn/users/Admin@platform.gapchain.vn/msp/signcerts/Admin@platform.gapchain.vn-cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer0.platform.gapchain.vn": {
+			"url": "grpcs://peer0.platform.gapchain.vn:7051",
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/platform.gapchain.vn/msp/tlscacerts/tlsca.platform.gapchain.vn-cert.pem"
+			},
+			"grpcOptions": {
+				"ssl-target-name-override": "peer0.platform.gapchain.vn",
+				"grpc.ssl_target_name_override": "peer0.platform.gapchain.vn",
+				"grpc.default_authority": "peer0.platform.gapchain.vn",
+				"request-timeout": 45000,
+				"grpc-wait-for-ready-timeout": 10000
+			}
+		}
+	},
+	"orderers": {
+		"orderer.gapchain.vn": {
+			"url": "grpcs://orderer.gapchain.vn:7050",
+			"tlsCACerts": {
+				"path": "/tmp/crypto/ordererOrganizations/gapchain.vn/orderers/orderer.gapchain.vn/tls/ca.crt"
+			},
+			"grpcOptions": {
+				"ssl-target-name-override": "orderer.gapchain.vn",
+				"grpc.ssl_target_name_override": "orderer.gapchain.vn"
+			}
+		}
+	}
+}

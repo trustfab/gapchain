@@ -47,6 +47,8 @@ This is not another boilerplate CRUD web-app. By joining our maintainer ranks, y
 
 GAPChain utilizes a multi-layer distributed proxy architecture powered by Hyperledger Fabric to shield end-users.
 
+![GAPChain Architecture](./gapchain_architecture_phase2.svg)
+
 ### 3.1 Core Stack Elements
 - **Blockchain Core**: Hyperledger Fabric v3.1.1.
 - **Smart Contracts (Chaincode)**: Golang 1.19+ (leveraging `fabric-chaincode-go/v2`, `fabric-contract-api-go/v2`).

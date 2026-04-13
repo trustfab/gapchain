@@ -1,0 +1,8 @@
+{
+  "index": {
+    "fields": ["ma_npp", "ngay_tao"]
+  },
+  "ddoc": "indexGDNPPNgayTao",
+  "name": "indexGDNPPNgayTao",
+  "type": "json"
+}

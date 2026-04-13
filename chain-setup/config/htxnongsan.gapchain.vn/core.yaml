@@ -1,0 +1,112 @@
+logging:
+  level: info
+
+peer:
+  id: peer0.htxnongsan.gapchain.vn
+  networkId: gapchain-network
+  listenAddress: 0.0.0.0:9051
+  address: peer0.htxnongsan.gapchain.vn:9051
+  addressAutoDetect: false
+  gomaxprocs: -1
+  keepalive:
+    minInterval: 60s
+    client:
+      interval: 60s
+      timeout: 20s
+    deliveryClient:
+      interval: 60s
+      timeout: 20s
+  gossip:
+    bootstrap: peer0.htxnongsan.gapchain.vn:9051
+    useLeaderElection: true
+    orgLeader: false
+    membershipTrackerInterval: 5s
+    endpoint:
+    maxBlockCountToStore: 100
+    maxPropagationBurstLatency: 10ms
+    maxPropagationBurstSize: 10
+    propagateIterations: 1
+    propagatePeerNum: 3
+    pullInterval: 4s
+    pullPeerNum: 3
+    requestStateInfoInterval: 4s
+    requestStateInfoBatchSize: 10
+    stateInfoRetentionInterval: 5s
+    publishStateInfoInterval: 4s
+    stateInfoBatchSize: 10
+    stateInfoMaxMembers: 5
+    skipBlockVerification: false
+    dialTimeout: 3s
+    connTimeout: 2s
+    recvBuffSize: 20
+    sendBuffSize: 200
+    digestWaitTime: 1s
+    requestWaitTime: 1s
+    responseWaitTime: 2s
+    aliveTimeInterval: 5s
+    aliveExpirationTimeout: 25s
+    reconnectInterval: 25s
+    externalEndpoint: ""
+    election:
+      startupGracePeriod: 15s
+      membershipSampleInterval: 1s
+      leaderAliveThreshold: 10s
+      leaderElectionDuration: 5s
+    pvtData:
+      pullRetryThreshold: 60s
+      transientstoreMaxBlockRetention: 1000
+      pushAckTimeout: 3s
+      btlPullMargin: 10
+      reconcileBatchSize: 10
+      reconcileSleepInterval: 1m
+      reconciliationEnabled: true
+      skipPullingInvalidTransactionsDuringCommit: false
+    state:
+      enabled: true
+      checkInterval: 10s
+      responseTimeout: 3s
+      batchSize: 10
+      blockBufferSize: 100
+      maxRetries: 3
+  events:
+    address: 0.0.0.0:7053
+    buffersize: 100
+    timeout: 10ms
+    timewindow: 15m
+    keepalive:
+      minInterval: 60s
+    sendTimeout: 60s
+  tls:
+    enabled: true
+    clientAuthRequired: true
+    cert:
+      file: ../../organizations/peerOrganizations/htxnongsan.gapchain.vn/peers/peer0.htxnongsan.gapchain.vn/tls/server.crt
+    key:
+      file: ../../organizations/peerOrganizations/htxnongsan.gapchain.vn/peers/peer0.htxnongsan.gapchain.vn/tls/server.key
+    rootcert:
+      file: ../../organizations/peerOrganizations/htxnongsan.gapchain.vn/peers/peer0.htxnongsan.gapchain.vn/tls/ca.crt
+    clientRootCAs:
+      files:
+        - ../../organizations/peerOrganizations/htxnongsan.gapchain.vn/peers/peer0.htxnongsan.gapchain.vn/tls/ca.crt
+    clientKey:
+      file: ../../organizations/peerOrganizations/htxnongsan.gapchain.vn/users/Admin@htxnongsan.gapchain.vn/tls/client.key
+    clientCert:
+      file: ../../organizations/peerOrganizations/htxnongsan.gapchain.vn/users/Admin@htxnongsan.gapchain.vn/tls/client.crt
+  authentication:
+    timewindow: 15m
+  fileSystemPath: /var/hyperledger/production
+  BCCSP:
+    Default: SW
+    SW:
+      Hash: SHA2
+      Security: 256
+      FileKeyStore:
+        KeyStore:
+
+# bccsp:
+#   default: SW
+#   sw:
+#     hash: SHA2
+#     security: 256
+#     filekeystore:
+#       keystore: msp/keystore

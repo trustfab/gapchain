@@ -1,0 +1,52 @@
+# Cấu hình Certificate Authority cho mạng GAPChain
+OrdererOrgs:
+  - Name: OrdererOrg
+    Domain: gapchain.vn
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - localhost
+          - 127.0.0.1
+          - orderer.gapchain.vn
+
+PeerOrgs:
+  # Tổ chức Platform (quản lý ứng dụng)
+  - Name: PlatformOrg
+    Domain: platform.gapchain.vn
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 2
+      # Tạo user admin và user1 cho platform
+
+  # Tổ chức HTX Nông Sản
+  - Name: HTXNongSanOrg
+    Domain: htxnongsan.gapchain.vn
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 3
+      # Tạo user admin, kt_vien, ql_htx cho HTX
+
+  # Tổ chức Chi Cục Bảo Vệ Thực Vật
+  - Name: ChiCucBVTVOrg
+    Domain: chicucbvtv.gapchain.vn
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 2
+      # Tạo user admin và user1 cho Chi Cục
+
+  # Tổ chức Nhà Phân Phối Xanh
+  - Name: NPPXanhOrg
+    Domain: nppxanh.gapchain.vn
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+    Users:
+      Count: 2
+      # Tạo user admin và ql_mua_hang cho NPP

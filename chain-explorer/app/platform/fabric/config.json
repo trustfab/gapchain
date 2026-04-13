@@ -1,0 +1,9 @@
+{
+	"network-configs": {
+		"gapchain-network": {
+			"name": "GAPChain Network",
+			"profile": "./connection-profile/gapchain-network.json"
+		}
+	},
+	"license": "Apache-2.0"
+}

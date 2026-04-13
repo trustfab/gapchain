@@ -1,0 +1,8 @@
+{
+  "index": {
+    "fields": ["ma_htx", "ngay_tao"]
+  },
+  "ddoc": "indexLHHtxNgayTao",
+  "name": "indexLHHtxNgayTao",
+  "type": "json"
+}

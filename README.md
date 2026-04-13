@@ -47,6 +47,8 @@ GAPChain không phải là một ứng dụng web CRUD tẻ nhạt. Khi tham gia
 
 GAPChain sử dụng kiến trúc phân tán đa lớp dựa trên Hyperledger Fabric.
 
+![GAPChain Architecture](./gapchain_architecture_phase2.svg)
+
 ### 3.1 Tech Stack
 - **Blockchain**: Hyperledger Fabric v3.1.1.
 - **Smart Contracts (Chaincode)**: Golang 1.19+ (sử dụng `fabric-chaincode-go/v2`, `fabric-contract-api-go/v2`).

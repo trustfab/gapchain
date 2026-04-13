@@ -16,7 +16,7 @@
           <a href="#dong-gop" class="hover:text-emerald-400 transition-colors">Đóng Góp</a>
         </div>
         <div>
-          <a href="https://github.com/trustfab/mvpgapchain" class="px-5 py-2.5 bg-slate-800 text-slate-200 text-sm font-bold rounded-lg border border-slate-700 hover:bg-slate-700 hover:border-slate-500 transition-colors flex items-center gap-2 shadow-sm">
+          <a href="https://github.com/trustfab/gapchain" class="px-5 py-2.5 bg-slate-800 text-slate-200 text-sm font-bold rounded-lg border border-slate-700 hover:bg-slate-700 hover:border-slate-500 transition-colors flex items-center gap-2 shadow-sm">
             Star on GitHub <span class="text-slate-400">&rarr;</span>
           </a>
         </div>
@@ -44,7 +44,7 @@
             <a href="#kien-truc" class="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg shadow-lg shadow-emerald-900/50 transition-colors text-center">
               Khám Phá Kiến Trúc ↓
             </a>
-            <a href="https://github.com/trustfab/mvpgapchain" class="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center gap-2">
+            <a href="https://github.com/trustfab/gapchain" class="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center gap-2">
               ⭐ Star on GitHub
             </a>
           </div>
@@ -410,7 +410,7 @@
             <span class="text-slate-300 font-sans">Mọi contribution — cấu hình docker nhỏ nhất cho đến module Flutter lớn — đều được review cẩn trọng và cấp credit vĩnh viễn trên README.</span>
           </p>
           <div class="flex flex-col sm:flex-row gap-4 mb-6">
-            <a href="https://github.com/trustfab/mvpgapchain" class="px-6 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg text-center transition-colors shadow-lg shadow-emerald-600/30">
+            <a href="https://github.com/trustfab/gapchain" class="px-6 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg text-center transition-colors shadow-lg shadow-emerald-600/30">
               🔧 Khám Phá Repo GitHub
             </a>
             <a href="#" class="px-6 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg border border-slate-700 text-center transition-colors">
@@ -465,9 +465,11 @@
         </p>
         <p class="text-xs text-slate-600 font-mono mt-4">&copy; 2026. Code under MIT License. All right preserved.</p>
         <div class="mt-8 flex justify-center space-x-6">
-          <a href="#" class="text-slate-500 hover:text-white transition-colors">GitHub</a>
+          <a href="https://github.com/trustfab/gapchain" class="text-slate-500 hover:text-white transition-colors">GitHub</a>
           <a href="#" class="text-slate-500 hover:text-white transition-colors">Discord</a>
-          <a href="#" class="text-slate-500 hover:text-white transition-colors">Documents</a>
+          <a href="https://github.com/trustfab/gapchain/blob/main/README.md" class="text-slate-500 hover:text-white transition-colors">Documents</a>
+          <a href="https://trustfab.github.io/gapchain/login" class="text-slate-500 hover:text-white transition-colors">Demo ORG</a>          
+          <a href="https://trustfab.github.io/gapchain/qr/consumer/LH-HTX001-1775545225847" class="text-slate-500 hover:text-white transition-colors">Demo QR</a>          
         </div>
       </div>
     </footer>

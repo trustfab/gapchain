@@ -1,0 +1,234 @@
+Organizations:
+  - &OrdererOrgMSP
+    Name: OrdererOrgMSP
+    ID: OrdererOrgMSP
+    MSPDir: organizations/ordererOrganizations/gapchain.vn/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrdererOrgMSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrdererOrgMSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrdererOrgMSP.admin')"
+
+  - &PlatformOrg
+    Name: PlatformOrgMSP
+    ID: PlatformOrgMSP
+    MSPDir: organizations/peerOrganizations/platform.gapchain.vn/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('PlatformOrgMSP.admin', 'PlatformOrgMSP.peer', 'PlatformOrgMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('PlatformOrgMSP.admin', 'PlatformOrgMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('PlatformOrgMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('PlatformOrgMSP.peer')"
+    OrdererEndpoints:
+      - orderer.gapchain.vn:7050
+    AnchorPeers:
+      - Host: peer0.platform.gapchain.vn
+        Port: 7051
+
+  - &HTXNongSanOrg
+    Name: HTXNongSanOrgMSP
+    ID: HTXNongSanOrgMSP
+    MSPDir: organizations/peerOrganizations/htxnongsan.gapchain.vn/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('HTXNongSanOrgMSP.admin', 'HTXNongSanOrgMSP.peer', 'HTXNongSanOrgMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('HTXNongSanOrgMSP.admin', 'HTXNongSanOrgMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('HTXNongSanOrgMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('HTXNongSanOrgMSP.peer')"
+    OrdererEndpoints:
+      - orderer.gapchain.vn:7050
+    AnchorPeers:
+      - Host: peer0.htxnongsan.gapchain.vn
+        Port: 7051
+
+  - &ChiCucBVTVOrg
+    Name: ChiCucBVTVOrgMSP
+    ID: ChiCucBVTVOrgMSP
+    MSPDir: organizations/peerOrganizations/chicucbvtv.gapchain.vn/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('ChiCucBVTVOrgMSP.admin', 'ChiCucBVTVOrgMSP.peer', 'ChiCucBVTVOrgMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('ChiCucBVTVOrgMSP.admin', 'ChiCucBVTVOrgMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('ChiCucBVTVOrgMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('ChiCucBVTVOrgMSP.peer')"
+    OrdererEndpoints:
+      - orderer.gapchain.vn:7050
+    AnchorPeers:
+      - Host: peer0.chicucbvtv.gapchain.vn
+        Port: 7051
+
+  - &NPPXanhOrg
+    Name: NPPXanhOrgMSP
+    ID: NPPXanhOrgMSP
+    MSPDir: organizations/peerOrganizations/nppxanh.gapchain.vn/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('NPPXanhOrgMSP.admin', 'NPPXanhOrgMSP.peer', 'NPPXanhOrgMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('NPPXanhOrgMSP.admin', 'NPPXanhOrgMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('NPPXanhOrgMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('NPPXanhOrgMSP.peer')"
+    OrdererEndpoints:
+      - orderer.gapchain.vn:7050
+    AnchorPeers:
+      - Host: peer0.nppxanh.gapchain.vn
+        Port: 7051
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+  Addresses:
+    - orderer.gapchain.vn:7050
+  EtcdRaft:
+    Consenters:
+      - Host: orderer.gapchain.vn
+        Port: 7050
+        ClientTLSCert: organizations/ordererOrganizations/gapchain.vn/orderers/orderer.gapchain.vn/tls/server.crt
+        ServerTLSCert: organizations/ordererOrganizations/gapchain.vn/orderers/orderer.gapchain.vn/tls/server.crt
+  BatchTimeout: 2s
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  # Profile 1: Channel tổng hợp (genesis block chứa tất cả org)
+  GapChainGenesis:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrdererOrgMSP
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *PlatformOrg
+        - *HTXNongSanOrg
+        - *ChiCucBVTVOrg
+        - *NPPXanhOrg
+      Capabilities:
+        <<: *ApplicationCapabilities
+
+  # Profile 2: Channel nhật ký HTX
+  NhatKyHTXChannel:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrdererOrgMSP
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *PlatformOrg
+        - *HTXNongSanOrg
+        - *ChiCucBVTVOrg
+      Capabilities:
+        <<: *ApplicationCapabilities
+
+  # Profile 3: Channel giao dịch
+  GiaoDichChannel:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrdererOrgMSP
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *PlatformOrg
+        - *HTXNongSanOrg
+        - *NPPXanhOrg
+      Capabilities:
+        <<: *ApplicationCapabilities
