@@ -38,7 +38,9 @@ jobs:
       # Build Vite app
       - name: Build
         working-directory: frontend-web
-        run: npm run build
+        run: |
+          npm run build
+          cp dist/index.html dist/404.html
 
       # Setup GitHub Pages
       - name: Setup Pages
