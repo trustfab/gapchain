@@ -1,0 +1,20 @@
+# Thư mục logs
+*.log
+
+# Thư mục dữ liệu tạm
+pgdata/
+walletstore/
+channel-artifacts/
+bin/
+
+# Các file tạm
+.DS_Store
+*.swp
+*.tmp
+
+# Các file chứng chỉ và khóa
+*.key
+
+# Thư mục build và dependencies
+node_modules/
+chain-setup/organizations/
