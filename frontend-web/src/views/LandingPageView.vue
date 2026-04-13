@@ -468,8 +468,8 @@
           <a href="https://github.com/trustfab/gapchain" class="text-slate-500 hover:text-white transition-colors">GitHub</a>
           <a href="#" class="text-slate-500 hover:text-white transition-colors">Discord</a>
           <a href="https://github.com/trustfab/gapchain/blob/main/README.md" class="text-slate-500 hover:text-white transition-colors">Documents</a>
-          <a href="https://trustfab.github.io/gapchain/login" class="text-slate-500 hover:text-white transition-colors">Demo ORG</a>          
-          <a href="https://trustfab.github.io/gapchain/qr/consumer/LH-HTX001-1775545225847" class="text-slate-500 hover:text-white transition-colors">Demo QR</a>          
+          <a href="/gapchain/login" class="text-slate-500 hover:text-white transition-colors">Demo ORG</a>          
+          <a href="/gapchain/qr/consumer/LH-HTX001-1775545225847" class="text-slate-500 hover:text-white transition-colors">Demo QR</a>          
         </div>
       </div>
     </footer>
