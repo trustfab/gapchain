@@ -96,9 +96,17 @@ async function quickLogin(role) {
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-200/20 rounded-full blur-3xl"></div>
     </div>
 
-    <div class="relative z-10 w-full max-w-4xl">
+    <div class="relative z-10 w-full max-w-4xl pt-12">
+      <!-- Back Link -->
+      <div class="absolute top-0 left-0">
+        <router-link to="/" class="inline-flex items-center gap-1.5 text-gray-500 hover:text-emerald-600 transition-colors text-sm font-medium bg-white/50 px-3 py-1.5 rounded-full hover:bg-white shadow-sm border border-transparent hover:border-emerald-100">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Quay lại Trang chủ
+        </router-link>
+      </div>
+
       <!-- Header -->
-      <div class="text-center mb-10">
+      <div class="text-center mb-10 mt-6">
         <div class="inline-flex items-center gap-3 mb-4">
           <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-700 rounded-2xl flex items-center justify-center shadow-lg">
             <span class="text-white text-2xl font-bold">G</span>

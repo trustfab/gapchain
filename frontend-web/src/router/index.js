@@ -9,6 +9,12 @@ const routes = [
     meta: { guest: true },
   },
   {
+    path: '/business',
+    name: 'MVPLanding',
+    component: () => import('@/views/MVPLandingView.vue'),
+    meta: { guest: true },
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/LoginView.vue'),

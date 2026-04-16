@@ -15,8 +15,11 @@
           <a href="#roadmap" class="hover:text-emerald-400 transition-colors">Roadmap</a>
           <a href="#dong-gop" class="hover:text-emerald-400 transition-colors">Đóng Góp</a>
         </div>
-        <div>
-          <a href="https://github.com/trustfab/gapchain" class="px-5 py-2.5 bg-slate-800 text-slate-200 text-sm font-bold rounded-lg border border-slate-700 hover:bg-slate-700 hover:border-slate-500 transition-colors flex items-center gap-2 shadow-sm">
+        <div class="flex items-center gap-3">
+          <router-link to="/business" class="px-5 py-2.5 text-emerald-400 text-sm font-bold rounded-lg border border-emerald-500/30 hover:bg-emerald-500/10 hover:border-emerald-500/60 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500/20">
+            Dành cho Doanh Nghiệp &rarr;
+          </router-link>
+          <a href="https://github.com/trustfab/gapchain" class="hidden lg:flex px-5 py-2.5 bg-slate-800 text-slate-200 text-sm font-bold rounded-lg border border-slate-700 hover:bg-slate-700 hover:border-slate-500 transition-colors items-center gap-2 shadow-sm">
             Star on GitHub <span class="text-slate-400">&rarr;</span>
           </a>
         </div>
