@@ -13,9 +13,13 @@
           <a href="#loi-ich" class="hover:text-emerald-600 transition-colors">Lợi Ích</a>
           <a href="#tinh-nang" class="hover:text-emerald-600 transition-colors">Tính Năng</a>
         </div>
-        <div>
+        <div class="flex items-center gap-3">
+          <router-link to="/" class="hidden sm:flex px-4 py-2.5 text-slate-500 hover:text-emerald-700 text-sm font-bold transition-all items-center gap-2 border border-transparent hover:border-emerald-200 hover:bg-emerald-50 rounded-lg">
+             <span class="font-mono text-xs bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded">&lt;/&gt;</span>
+             Dành cho Developer
+          </router-link>
           <a href="#" class="px-5 py-2.5 bg-emerald-600 text-white text-sm font-bold rounded-lg hover:bg-emerald-500 hover:shadow-lg hover:shadow-emerald-500/30 transition-all flex items-center gap-2">
-            Đăng Ký Trải Nghiệm Pilot
+            Trải Nghiệm Pilot
           </a>
         </div>
       </div>
@@ -233,17 +237,23 @@
         <!-- Feature Block 2 -->
         <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-10">
           <div class="w-full md:w-1/2">
-            <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-3xl border border-blue-200 shadow-sm relative text-center">
-              <div class="bg-white p-3 inline-block rounded-xl shadow-xl mt-4 mb-8">
-                <!-- Fake QR Code block -->
-                <div class="grid grid-cols-4 gap-1 p-2 bg-white ring-2 ring-blue-500 rounded">
-                  <div class="w-4 h-4 bg-slate-900 rounded-sm"></div><div class="w-4 h-4 bg-slate-900 rounded-sm"></div><div class="w-4 h-4 bg-transparent"></div><div class="w-4 h-4 bg-slate-900 rounded-sm"></div>
-                  <div class="w-4 h-4 bg-slate-900 rounded-sm"></div><div class="w-4 h-4 bg-transparent"></div><div class="w-4 h-4 bg-slate-900 rounded-sm"></div><div class="w-4 h-4 bg-slate-900 rounded-sm"></div>
-                  <div class="w-4 h-4 bg-transparent"></div><div class="w-4 h-4 bg-slate-900 rounded-sm"></div><div class="w-4 h-4 bg-slate-900 rounded-sm"></div><div class="w-4 h-4 bg-transparent"></div>
-                  <div class="w-4 h-4 bg-slate-900 rounded-sm"></div><div class="w-4 h-4 bg-slate-900 rounded-sm"></div><div class="w-4 h-4 bg-transparent"></div><div class="w-4 h-4 bg-slate-900 rounded-sm"></div>
-                </div>
+            <div class="relative w-full rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
+              <!-- Background Image -->
+              <img src="/saleswoman_rice.png" alt="Gạo Hữu Cơ Hạt Ngọc - Cô Cửa Hàng" class="w-full h-auto object-cover" />
+              
+              <!-- Injected Live QR Code absolutely positioned exactly on the white label -->
+              <div class="absolute z-10" style="bottom: 15%; left: 50%; transform: translateX(-50%); width: 15%; aspect-ratio: 1/1;">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?margin=2&size=180x180&data=https://trustfab.github.io/gapchain/qr/consumer/LH-HTX001-1775545225847" 
+                     alt="Scan ME" 
+                     class="w-full h-full mix-blend-darken opacity-90 group-hover:opacity-100 transition-all cursor-pointer hover:scale-105 rounded-sm" />
               </div>
-              <p class="text-sm font-bold text-blue-700 bg-white inline-block px-4 py-2 rounded-full shadow-sm mb-4">Truy Nguồn "1 Chạm"</p>
+
+              <!-- Floating badge hinting users to scan -->
+              <div class="absolute top-6 left-6 animate-bounce" style="animation-duration: 4s">
+                <span class="text-xs font-bold text-white bg-blue-600/90 backdrop-blur px-4 py-2 rounded-full shadow-xl border border-white/20 flex items-center gap-2 uppercase tracking-wide">
+                  📱 Quét để Truy Nguồn "1 Chạm"
+                </span>
+              </div>
             </div>
           </div>
           <div class="w-full md:w-1/2 lg:pr-12 text-left">

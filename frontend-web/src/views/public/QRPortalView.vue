@@ -206,9 +206,18 @@ const getLohangBadge = (status) => {
       <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-yellow-300/20 rounded-full blur-3xl"></div>
     </div>
 
-    <div class="relative z-10 max-w-3xl mx-auto px-4 py-8">
+    <div class="relative z-10 max-w-3xl mx-auto px-4 pt-10 pb-8">
+      
+      <!-- Back Link -->
+      <div class="absolute top-4 left-4 z-20">
+        <router-link to="/business" class="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-800/60 hover:text-emerald-700 bg-white/60 hover:bg-white px-2 py-1 rounded-full border border-emerald-200/50 shadow-sm transition-all backdrop-blur-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Giải pháp doanh nghiệp
+        </router-link>
+      </div>
+
       <!-- Header -->
-      <div class="text-center mb-8">
+      <div class="text-center mb-8 relative">
         <div class="inline-flex items-center gap-2 mb-3">
           <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-700 rounded-xl flex items-center justify-center shadow-lg">
             <span class="text-white text-lg font-bold">G</span>

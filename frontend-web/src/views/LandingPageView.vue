@@ -20,7 +20,7 @@
             Dành cho Doanh Nghiệp &rarr;
           </router-link>
           <a href="https://github.com/trustfab/gapchain" class="hidden lg:flex px-5 py-2.5 bg-slate-800 text-slate-200 text-sm font-bold rounded-lg border border-slate-700 hover:bg-slate-700 hover:border-slate-500 transition-colors items-center gap-2 shadow-sm">
-            Star on GitHub <span class="text-slate-400">&rarr;</span>
+            ⭐ Star on GitHub <span class="text-slate-400">&rarr;</span>
           </a>
         </div>
       </div>
@@ -41,19 +41,19 @@
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-500">Cộng Đồng Thật.</span>
           </h1>
           <p class="text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
-            GAPChain MVP đang chạy local trên <span class="text-slate-200 font-mono text-sm bg-slate-800 px-1 py-0.5 rounded border border-slate-700">Hyperledger Fabric 3.1.1</span> với 4 org, 2 channel, 3 chaincode — và cần những developer dũng cảm đưa nó lên production.
+            GAPChain MVP đang chạy local trên <span class="text-slate-200 font-mono text-sm bg-slate-800 px-1 py-0.5 rounded border border-slate-700">Hyperledger Fabric v3</span> với 4 org, 2 channel, 3 chaincode — và cần những developer dũng cảm đưa nó lên production.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 mb-8">
-            <a href="#kien-truc" class="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg shadow-lg shadow-emerald-900/50 transition-colors text-center">
+          <div class="flex flex-col sm:flex-row gap-4 mb-8 flex-wrap">            
+            <a href="#kien-truc" class="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg shadow-lg shadow-emerald-900/50 transition-colors text-center flex items-center justify-center">
               Khám Phá Kiến Trúc ↓
             </a>
-            <a href="https://github.com/trustfab/gapchain" class="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg border border-slate-700 transition-colors flex items-center justify-center gap-2">
-              ⭐ Star on GitHub
-            </a>
+            <router-link to="/qr/consumer/LH-HTX001-1775545225847" class="px-6 py-3.5 bg-white text-slate-900 hover:bg-slate-200 font-bold rounded-lg shadow-lg shadow-emerald-900/20 transition-colors flex items-center justify-center gap-2">
+              📱 Quét Thẻ QR Thử
+            </router-link>
           </div>
           <div class="flex flex-wrap gap-4 text-xs font-mono font-medium text-slate-500">
             <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-slate-600"></span> MIT License</span>
-            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-500"></span> Fabric 3.1.1</span>
+            <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-500"></span> Fabric v3</span>
             <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Local → Production</span>
           </div>
         </div>
@@ -178,7 +178,7 @@
 [Fabric Gateway SDK v1.x]  ────── Query ────► [CouchDB] (State DB)
             │                                     • Rich JSON Query
             ▼                                     • GetHistoryForKey
-[Hyperledger Fabric 3.1.1 Network]
+[Hyperledger Fabric v3 Network]
             ├── <span class="text-emerald-400 font-bold">nhatky-htx-channel</span>
             │     ├── <span class="text-blue-400 font-bold">lohang_cc</span>  (Lô hàng & chứng nhận VietGAP)
             │     └── <span class="text-blue-400 font-bold">nhatky_cc</span>  (Nhật ký canh tác, audit trail)
@@ -245,7 +245,7 @@
           <div>
             <h4 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Blockchain Core</h4>
             <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1.5 bg-white text-slate-800 rounded-lg text-sm font-bold border border-slate-200 shadow-sm">Hyperledger Fabric 3.1.1</span>
+              <span class="px-3 py-1.5 bg-white text-slate-800 rounded-lg text-sm font-bold border border-slate-200 shadow-sm">Hyperledger Fabric v3</span>
               <span class="px-3 py-1.5 bg-blue-50 text-blue-800 rounded-lg text-sm font-bold border border-blue-200 shadow-sm">Chaincode Go</span>
               <span class="px-3 py-1.5 bg-red-50 text-red-800 rounded-lg text-sm font-bold border border-red-200 shadow-sm">CouchDB</span>
               <span class="px-3 py-1.5 bg-white font-mono text-slate-600 rounded-lg text-xs font-medium border border-slate-200">fabric-contract-api-go v1.2.2</span>
@@ -305,7 +305,7 @@
             <div class="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center text-2xl mb-6 shadow-inner border border-slate-700">🏆</div>
             <h3 class="text-xl font-bold text-white mb-4">Portfolio Thực Chiến</h3>
             <p class="text-slate-400 text-sm leading-relaxed">
-              Hyperledger Fabric 3.1.1 production experience là kỹ năng cực hiếm tại môi trường công nghệ Việt Nam. Mọi contribution đều được ghi nhận công khai trên GitHub với tên tuổi của bạn trong lịch sử commit.
+              Hyperledger Fabric v3 production experience là kỹ năng cực hiếm tại môi trường công nghệ Việt Nam. Mọi contribution đều được ghi nhận công khai trên GitHub với tên tuổi của bạn trong lịch sử commit.
             </p>
           </div>
           <!-- Card 2 -->
@@ -461,7 +461,7 @@
         </div>
         <p class="text-sm font-medium text-slate-500 mb-4 inline-flex items-center flex-wrap justify-center gap-2">
           <span class="px-2 py-1 bg-slate-800 rounded">Open Source Agri-Blockchain</span>
-          <span class="px-2 py-1 bg-slate-800 rounded">Hyperledger Fabric 3.1.1</span>
+          <span class="px-2 py-1 bg-slate-800 rounded">Hyperledger Fabric v3</span>
           <span class="px-2 py-1 bg-slate-800 rounded">Golang</span>
           <span class="px-2 py-1 bg-slate-800 rounded">Flutter</span>
           <span class="px-2 py-1 bg-slate-800 rounded">Vue</span>
