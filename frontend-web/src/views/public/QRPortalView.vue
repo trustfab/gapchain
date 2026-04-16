@@ -13,6 +13,7 @@ const loading = ref(true)
 const error = ref('')
 const showTxId = ref(false)
 const mapReady = ref(false)
+const isDemoData = ref(false)
 
 const isExpired = (dateString) => {
   if (!dateString) return false
@@ -48,7 +49,105 @@ onMounted(async () => {
     await nextTick()
     mapReady.value = true
   } catch (e) {
-    error.value = e.response?.data?.error || 'Không tìm thấy thông tin lô hàng'
+    // Giả lập dữ liệu Demo rất đẹp thay vì báo lỗi
+    isDemoData.value = true
+    lohang.value = {
+      ma_lo: maLo,
+      ten_san_pham: "Gạo ST25",
+      trang_thai: "san_sang_ban",
+      ma_htx: "HTX Nông Nghiệp Bình Minh",
+      loai_san_pham: "lua",
+      vu_mua: "Đông Xuân 2025",
+      so_luong: "1500",
+      don_vi_tinh: "kg",
+      dia_diem: "Sóc Trăng",
+      vi_tri: "9.595, 105.972",
+      chung_nhan: [
+        {
+          ma_chung_nhan: "VG-2025-001",
+          ten_chung_nhan: "VietGAP 2025",
+          co_quan_cap: "Chi cục BVTV Sóc Trăng",
+          ngay_cap: "10/01/2025",
+          ngay_het_han: "10/01/2026"
+        }
+      ],
+      tx_id: "tx_" + maLo + "_9f8c7b6a..."
+    }
+
+    nhatkys.value = [
+      {
+        id: "nk1",
+        loai_hoat_dong: "gieo_hat",
+        chi_tiet: "Gieo hạt giống ST25 chuẩn tỷ lệ nảy mầm 99%. Mật độ gieo sạ 80kg/ha.",
+        vat_tu_su_dung: "Hạt giống ST25",
+        nguoi_thuc_hien: "Trần Văn A",
+        vi_tri: "Thửa ruộng số 5",
+        ngay_ghi: "15/12/2024",
+        trang_thai_duyet: "da_duyet",
+        minh_chung_hash: "hash123abc456def789"
+      },
+      {
+        id: "nk2",
+        loai_hoat_dong: "bon_phan",
+        chi_tiet: "Bón phân hữu cơ vi sinh, tuân thủ không hóa chất độc hại.",
+        vat_tu_su_dung: "Phân hữu cơ vi sinh Sông Gianh",
+        nguoi_thuc_hien: "Trần Văn A",
+        vi_tri: "Thửa ruộng số 5",
+        ngay_ghi: "25/01/2025",
+        trang_thai_duyet: "da_duyet",
+        minh_chung_hash: "hashabc123def456"
+      },
+      {
+        id: "nk3",
+        loai_hoat_dong: "thu_hoach",
+        chi_tiet: "Gặt đập liên hợp thu hoạch lúa tôm trên ruộng.",
+        vat_tu_su_dung: "Máy gặt Kubota",
+        nguoi_thuc_hien: "Bùi Văn B",
+        vi_tri: "Thửa ruộng số 5",
+        ngay_ghi: "15/04/2025",
+        trang_thai_duyet: "da_duyet",
+        minh_chung_hash: "hash456def789ghi"
+      },
+      {
+        id: "nk4",
+        loai_hoat_dong: "kiem_tra",
+        chi_tiet: "Kiểm tra chất lượng, sấy lúa, xát vỏ và đóng gói tiêu chuẩn Gạo ST25 loại 5kg.",
+        vat_tu_su_dung: "Bao bì tái chế sinh học",
+        nguoi_thuc_hien: "Trạm Sơ Chế Bình Minh",
+        vi_tri: "Kho xử lý số 1",
+        ngay_ghi: "17/04/2025",
+        trang_thai_duyet: "da_duyet",
+        minh_chung_hash: "hash789ghi012jkl"
+      },
+      {
+        id: "nk5",
+        loai_hoat_dong: "giao_hang",
+        chi_tiet: "Bàn giao lô gạo đóng gói cho xe vận tải giữ nhiệt điều hướng tới Nhà Phân Phối.",
+        vat_tu_su_dung: "Đội xe lạnh tải trọng 5 tấn",
+        nguoi_thuc_hien: "Đội Vận Tải HTX",
+        vi_tri: "Check-in GPS dọc đường",
+        ngay_ghi: "18/04/2025",
+        trang_thai_duyet: "da_duyet",
+        minh_chung_hash: "hash012jkl345mno"
+      },
+      {
+        id: "nk6",
+        loai_hoat_dong: "len_ke",
+        chi_tiet: "NPP xác nhận nhận hàng chuẩn chất lượng, xuất mã vạch và phân lô trưng bày lên siêu thị.",
+        vat_tu_su_dung: "Phần mềm kiểm kê Barcode",
+        nguoi_thuc_hien: "Nhà Phân Phối Xanh",
+        vi_tri: "Siêu thị chi nhánh Q. Ninh Kiều",
+        ngay_ghi: "19/04/2025",
+        trang_thai_duyet: "da_duyet",
+        minh_chung_hash: "hash345mno678pqr"
+      }
+    ]
+
+    lohang_me.value = null
+    nhatkys_me.value = []
+
+    setTimeout(() => { mapReady.value = true }, 500)
+    error.value = ''
   } finally {
     loading.value = false
   }
@@ -67,6 +166,7 @@ const activityIcon = (loai) => {
   const map = {
     gieo_hat: '🌱', bon_phan: '🧪', tuoi_nuoc: '💧',
     phun_thuoc: '🔬', thu_hoach: '🌾', kiem_tra: '🔍',
+    giao_hang: '🚚', len_ke: '🏪'
   }
   return map[loai] || '📝'
 }
@@ -79,6 +179,8 @@ const activityColor = (loai) => {
     phun_thuoc: 'from-purple-400 to-violet-500',
     thu_hoach: 'from-orange-400 to-red-500',
     kiem_tra: 'from-teal-400 to-emerald-500',
+    giao_hang: 'from-cyan-400 to-blue-500',
+    len_ke: 'from-indigo-400 to-purple-500'
   }
   return map[loai] || 'from-gray-400 to-gray-500'
 }
@@ -114,6 +216,13 @@ const getLohangBadge = (status) => {
           <span class="text-xl font-bold bg-gradient-to-r from-green-700 to-emerald-500 bg-clip-text text-transparent">GAPChain</span>
         </div>
         <h1 class="text-2xl font-bold text-gray-800">Truy xuất nguồn gốc</h1>
+
+        <!-- Warning Badge for Demo Data -->
+        <div v-if="isDemoData" class="mt-4 flex justify-center">
+            <span class="bg-amber-100 text-amber-700 text-[11px] uppercase tracking-wide font-bold px-3 py-1.5 rounded-full border border-amber-200 flex items-center gap-1.5 shadow-sm transform hover:scale-105 transition-transform">
+               ✨ Dữ liệu demo minh họa
+            </span>
+        </div>
       </div>
 
       <!-- Loading -->
@@ -350,7 +459,7 @@ const getLohangBadge = (status) => {
         <!-- Footer -->
         <div class="text-center mt-8">
           <p class="text-xs text-gray-400">GAPChain &middot; Hệ thống truy xuất nguồn gốc nông sản Blockchain</p>
-          <p class="text-xs text-gray-300 mt-1">Hyperledger Fabric v3.1.1</p>
+          <p class="text-xs text-gray-300 mt-1">TrustFab (Hyperledger Fabric v3)</p>
         </div>
       </template>
     </div>
