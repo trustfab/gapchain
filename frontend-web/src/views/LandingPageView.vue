@@ -155,6 +155,18 @@
               <p class="text-xs font-mono text-emerald-600 font-semibold"><span class="text-slate-300">→</span> Fabric MSP + per-function Identity Check</p>
             </div>
           </div>
+
+          <!-- Card 6 -->
+          <div class="p-8 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl mb-6 font-mono font-bold">6</div>
+            <h3 class="text-xl font-bold mb-3 text-slate-900">AI + IoT & Rule-based Scale</h3>
+            <p class="text-slate-600 text-sm mb-6 leading-relaxed flex-1">
+              Xây dựng hệ thống AI + IoT để tối ưu hóa quy trình sản xuất và phân phối. Thiết kế kiến trúc dựa trên quy tắc có khả năng mở rộng. Sử dụng nền tảng phát triển hỗ trợ AI để đẩy nhanh tiến độ triển khai.
+            </p>
+            <div class="pt-4 border-t border-slate-100 mt-auto">
+              <p class="text-xs font-mono text-indigo-600 font-semibold"><span class="text-slate-300">→</span> AI Agents + Rule Engine + IoT Sensors</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -265,6 +265,31 @@
           </div>
         </div>
 
+        <!-- Feature Block 3 -->
+        <div class="flex flex-col md:flex-row items-center gap-12 mt-20">
+          <div class="w-full md:w-1/2">
+            <div class="bg-gradient-to-br from-indigo-50 to-blue-100 p-8 rounded-3xl border border-indigo-200 shadow-sm relative overflow-hidden h-full min-h-[250px] flex items-center justify-center">
+               <!-- Abstract AI / IoT visualization -->
+               <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(#4f46e5 1px, transparent 1px); background-size: 20px 20px;"></div>
+               <div class="relative z-10 bg-white/90 backdrop-blur-sm p-6 rounded-2xl border border-white shadow-xl text-center w-4/5 md:w-3/4 transform transition hover:scale-105 duration-300">
+                 <div class="text-4xl mb-4">🤖 📡</div>
+                 <p class="font-bold text-slate-800 text-lg mb-2">Hệ Sinh Thái Thông Minh</p>
+                 <div class="flex flex-wrap justify-center gap-2 mt-3">
+                   <span class="text-[10px] font-bold px-2 py-1 bg-indigo-100 text-indigo-700 rounded-lg">IoT Sensors</span>
+                   <span class="text-[10px] font-bold px-2 py-1 bg-indigo-100 text-indigo-700 rounded-lg">AI Optimization</span>
+                 </div>
+               </div>
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 md:pl-8 text-left">
+            <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold mb-4">3</div>
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-4">Tối Ưu Hóa Bằng AI & IoT</h3>
+            <p class="text-slate-600 text-lg leading-relaxed mb-6">
+              Nền tảng của chúng tôi <strong>thiết kế bằng kiến trúc dựa trên quy tắc (rule-based)</strong> với tính linh hoạt và khả năng mở rộng cao. Đặc biệt hỗ trợ <strong>xây dựng hệ thống AI và IoT</strong> để đo lường chính xác, qua đó tối ưu hóa toàn bộ quy trình sản xuất và mạng lưới phân phối. Nhờ áp dụng <strong>phát triển phần mềm hỗ trợ bằng AI</strong>, tiến độ triển khai liên tục các tính năng phục vụ doanh nghiệp bạn sẽ được đẩy nhanh thần tốc.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
 
