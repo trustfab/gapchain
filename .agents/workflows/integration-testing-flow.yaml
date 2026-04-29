@@ -1,0 +1,56 @@
+name: "Backend API Integration Testing Workflow"
+description: "Quy trình thực hiện Integration Test cho Backend API GAPChain. Gộp 3 layer (Handler -> Usecase -> Repo) chạy thực tế với nhau, chỉ mock ở biên giới cuối cùng (Fabric Gateway)."
+version: "1.0.0"
+
+trigger:
+  - "viết integration test"
+  - "test tích hợp backend"
+  - "ginkgo integration test"
+
+prerequisites:
+  - "Đã cài đặt Ginkgo CLI."
+  - "Hiểu cách kết nối thực tế các layer (DI qua Fx hoặc khởi tạo thủ công bằng hàm New...)."
+  - "Đã thực hiện Unit Test đầy đủ các layer. Integration test dùng để bắt các lỗi ghép nối (vd: Handler truyền sai thứ tự param cho Usecase)."
+
+steps:
+  - id: prepare_integration_suite
+    name: "1. Chuẩn bị Thư mục và Suite"
+    description: |
+      - Tạo một thư mục riêng biệt cho Integration Test (VD: `test/integration` ở thư mục gốc của project).
+      - Di chuyển vào thư mục đó, chạy `ginkgo bootstrap` và `ginkgo generate <api_name>_integration`.
+      - Khuyến nghị gom các test theo nhóm tính năng (VD: `lohang_integration_test.go`, `giaodich_integration_test.go`).
+
+  - id: setup_real_layers
+    name: "2. Khởi tạo toàn bộ Layer (End-to-End nội bộ)"
+    description: |
+      - Khởi tạo Mock duy nhất là `MockFabricContract` (nằm ở đáy của hệ thống).
+      - Khởi tạo `GatewayRegistry` (không gọi `NewGatewayRegistry` để tránh load certs thật).
+      - Inject `MockFabricContract` vào Registry qua hàm `registry.SetOrgGatewayForTest(...)`.
+      - Khởi tạo Repository THẬT (`NewLohangRepo`, `NewNhatkyRepo`) truyền vào `registry` ở trên.
+      - Khởi tạo Usecase THẬT truyền vào Repository ở trên.
+      - Khởi tạo HTTP Handler THẬT truyền vào Usecase ở trên.
+      - Gắn Handler vào `gin.Engine`.
+
+  - id: write_integration_scenarios
+    name: "3. Viết Kịch bản Tích hợp Xuyên Suốt"
+    description: |
+      - Tạo HTTP Request thật với payload đẩy vào Gin Router (dùng `httptest.NewRecorder()`).
+      - Lắng nghe ở tầng `MockFabricContract` (`SubmitTransactionFunc`) để assert:
+        + Tên hàm (name) có đúng với logic chaincode không?
+        + Tham số (args) đi từ HTTP Request qua Handler xuống Usecase, tới Repo đẩy vào Fabric có đúng định dạng và thứ tự không?
+      - Test các luồng phức tạp: Dữ liệu API vào -> Usecase xử lý logic -> Gọi liên tiếp nhiều hàm Repo -> Ra Fabric.
+
+  - id: test_authentication_middleware
+    name: "4. Tích hợp JWT Auth (Tùy chọn)"
+    description: |
+      - Nếu muốn test cả middleware JWT thật (thay vì giả lập):
+        + Gắn `middleware.JWTAuth()` vào Gin engine.
+        + Ký sinh ra một JWT Token hợp lệ chứa `msp_id` thật, gắn vào header `Authorization: Bearer <token>` của HTTP Request.
+        + Đảm bảo request đi qua Middleware trót lọt và trích xuất đúng `mspID` đi xuyên suốt hệ thống.
+
+  - id: execute_integration_tests
+    name: "5. Thực thi và Quản lý Integration Test"
+    description: |
+      - Integration test thường có thể chạy lâu hơn và setup phức tạp hơn Unit Test. Hãy gắn Label cho chúng (VD: `It("luồng tạo lô hàng", Label("integration"), func() {})`).
+      - Chạy lệnh `ginkgo --label-filter="integration" -v` để chỉ chạy các bài test tích hợp.
+      - Đảm bảo suite chạy thành công trước khi merge code vào nhánh chính.

@@ -1,0 +1,50 @@
+name: "Backend API Unit Testing Workflow"
+description: "Quy trình thực hiện Unit Test cho từng layer (Handler, Usecase, Repo) trong Backend API GAPChain, sử dụng Ginkgo v2, Gomega. Tập trung vào việc mock các dependency để test độc lập."
+version: "1.1.0"
+
+trigger:
+  - "viết unit test"
+  - "unit test backend"
+  - "ginkgo unit test"
+
+prerequisites:
+  - "Đã cài đặt Ginkgo CLI (go install github.com/onsi/ginkgo/v2/ginkgo@latest)."
+  - "Hiểu rõ về Dependency Injection và cách tạo Struct Mock (VD: MockUsecase, MockRepo, MockFabricContract)."
+  - "Nắm vững cú pháp BDD trong Ginkgo: Describe, Context, It, BeforeEach."
+
+steps:
+  - id: prepare_test_suite
+    name: "1. Chuẩn bị Test Suite"
+    description: |
+      - Di chuyển vào thư mục package cần test (VD: `handler/http`, `usecase`, `repository/fabric`).
+      - Chạy `ginkgo bootstrap` để tạo `*_suite_test.go` (chỉ chạy 1 lần cho mỗi package).
+      - Chạy `ginkgo generate <tên_file>` để tạo file test `*_test.go`.
+
+  - id: unit_test_handler
+    name: "2. Viết Unit Test cho HTTP Handlers"
+    description: |
+      - Mục đích: Chỉ test logic xử lý HTTP, không đụng đến Usecase thật.
+      - Thiết lập: Dùng `httptest.NewRecorder()` và `gin.Engine`. Khởi tạo `MockUsecase` và inject vào Handler.
+      - Giả lập Auth: Set trực tiếp `mspID` vào request context (`c.Set("mspID", "HTXNongSanOrgMSP")`).
+      - Kịch bản: Happy Path (kiểm tra parse payload JSON, HTTP 200/201), Validation Error (HTTP 400), Usecase trả về lỗi (HTTP 500).
+
+  - id: unit_test_usecase
+    name: "3. Viết Unit Test cho Usecase Layer"
+    description: |
+      - Mục đích: Chỉ test logic nghiệp vụ, không đụng đến Repo hay Fabric.
+      - Thiết lập: Khởi tạo `MockRepo` (VD: `MockLohangRepo`, `MockNhatkyRepo`) và inject vào Usecase.
+      - Kịch bản: Test logic validate đầu vào, check phân quyền bổ sung, tính toán số liệu. Assert kết quả trả về đúng dựa trên dữ liệu mock từ Repo.
+
+  - id: unit_test_repo
+    name: "4. Viết Unit Test cho Repository Layer"
+    description: |
+      - Mục đích: Test logic lấy `OrgGateway` và giao tiếp với Fabric Contract mà không cần gọi gRPC thật.
+      - Thiết lập: Dùng `GatewayRegistry.SetOrgGatewayForTest()` để inject `MockFabricContract` vào Registry.
+      - Kịch bản: Check chặn mspID sai, check chặn Org không nằm trong channel (`Contract == nil`), và check gọi hàm `SubmitTransaction`/`EvaluateTransaction` truyền đúng parameter.
+
+  - id: execute_and_verify
+    name: "5. Thực thi Unit Test và Kiểm tra"
+    description: |
+      - Chạy lệnh `ginkgo -v` tại thư mục package để chạy suite tương ứng.
+      - Để chạy toàn bộ Unit test trong dự án: `ginkgo -r -v`.
+      - Đo lường độ phủ bằng `ginkgo -r -cover`.

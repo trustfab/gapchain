@@ -14,12 +14,18 @@ import (
 	"google.golang.org/grpc/credentials"
 )
 
+// FabricContract định nghĩa các hàm tương tác với chaincode, giúp mock dễ dàng trong Unit Test
+type FabricContract interface {
+	SubmitTransaction(name string, args ...string) ([]byte, error)
+	EvaluateTransaction(name string, args ...string) ([]byte, error)
+}
+
 // OrgGateway chứa Gateway và Contracts cho một org cụ thể
 type OrgGateway struct {
 	Gateway          *client.Gateway
-	LotHangContract  *client.Contract // nil nếu org không tham gia nhatky-htx-channel
-	NhatKyContract   *client.Contract // nil nếu org không tham gia nhatky-htx-channel
-	GiaoDichContract *client.Contract // nil nếu org không tham gia giaodich-channel
+	LotHangContract  FabricContract // nil nếu org không tham gia nhatky-htx-channel
+	NhatKyContract   FabricContract // nil nếu org không tham gia nhatky-htx-channel
+	GiaoDichContract FabricContract // nil nếu org không tham gia giaodich-channel
 }
 
 // GatewayRegistry quản lý Gateway cho tất cả orgs
@@ -62,6 +68,16 @@ func (r *GatewayRegistry) GetOrgGateway(mspID string) (*OrgGateway, error) {
 // GetFallbackGateway trả về gateway mặc định (Platform) cho public endpoints
 func (r *GatewayRegistry) GetFallbackGateway() (*OrgGateway, error) {
 	return r.GetOrgGateway(r.FallbackMspID)
+}
+
+// SetOrgGatewayForTest hỗ trợ inject mock Gateway cho Unit Test
+func (r *GatewayRegistry) SetOrgGatewayForTest(mspID string, gw *OrgGateway) {
+	r.mu.Lock()
+	defer r.mu.Unlock()
+	if r.gateways == nil {
+		r.gateways = make(map[string]*OrgGateway)
+	}
+	r.gateways[mspID] = gw
 }
 
 // CloseAll đóng tất cả gateway connections
